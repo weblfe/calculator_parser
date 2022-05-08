@@ -1,0 +1,25 @@
+use std::str::FromStr;
+
+grammar;
+
+
+pub Expr: i32 = {
+    <l:Expr> "+" <r:Factor> => l + r,
+    <l:Expr> "-" <r:Factor> => l - r,
+    Factor,
+};
+
+Factor: i32 = {
+    <l:Factor> "*" <r:TermNum> => l * r,
+    <l:Factor> "/" <r:TermNum> => l / r,
+    TermNum,
+};
+
+// 语法糖
+pub TermNum = {
+ Number, "(" <Expr> ")"
+};
+
+Number: i32 = {
+  r"[0-9]+" => i32::from_str(<>).unwrap(),
+};
