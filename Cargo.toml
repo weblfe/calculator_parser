@@ -1,0 +1,14 @@
+[package]
+name = "calculator_parser"
+version = "0.1.0"
+edition = "2021"
+authors = ["weblinuxgame <weblinuxgame@126.com>"]
+build = "build.rs"
+
+[build-dependencies]
+lalrpop = "0.19.7"
+
+[dependencies]
+lalrpop-util = "0.19.7"
+regex = "1"
+lalrpop = { version = "^0.19", features = ["lexer"] }
